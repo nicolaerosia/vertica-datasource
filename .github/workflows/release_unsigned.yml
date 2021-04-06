@@ -1,9 +1,9 @@
-name: Release Unsinged
+name: Release Unsigned
 
 on:
   push:
     tags:
-      - "unsinged-v*.*.*" # Run workflow on version tags, e.g. v1.0.0.
+      - "unsigned-v*.*.*" # Run workflow on version tags, e.g. v1.0.0.
 
 jobs:
   release:
@@ -101,7 +101,7 @@ jobs:
           echo "::set-output name=path::release_notes.md"
 
       - name: Check package version
-        run: if [ "unsinged-v${{ steps.metadata.outputs.plugin-version }}" != "${{ steps.metadata.outputs.github-tag }}" ]; then printf "\033[0;31mPlugin version doesn't match tag name\033[0m\n"; exit 1; fi
+        run: if [ "unsigned-v${{ steps.metadata.outputs.plugin-version }}" != "${{ steps.metadata.outputs.github-tag }}" ]; then printf "\033[0;31mPlugin version doesn't match tag name\033[0m\n"; exit 1; fi
 
       - name: Package plugin
         id: package-plugin
